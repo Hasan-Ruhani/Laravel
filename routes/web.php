@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\getController;
+use App\Http\Controllers\postController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/hi', function () {
     return('Hi Laravel Web');
 });
+
+Route::get('/post', [postController::class, 'post']);
+Route::get('/get/{id?}/{name?}', [getController::class, 'get']);
