@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\bookController;
 use App\Http\Controllers\getController;
 use App\Http\Controllers\postController;
+use App\Http\Controllers\weatherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +23,16 @@ Route::get('/hi', function () {
 
 Route::get('/post', [postController::class, 'post']);
 Route::get('/get/{id?}/{name?}', [getController::class, 'get']);
+
+Route::controller(bookController::class) -> group(function(){
+    Route::get('/books', 'books');
+    Route::get('/books/{id}', 'getBook') -> whereNumber(('id'));  //only recive any number
+    Route::get('/books/{id}/{field}', 'getBookField');
+
+    Route::post('/books', 'createBook');
+});
+// Route::get('/books',[bookController::class, 'books']);
+// Route::get('/books/{id}',[bookController::class, 'getBook']) -> whereNumber(('id'));  //only recive any number
+// Route::get('/books/{id}/{field}',[bookController::class, 'getBookField']);
+
+Route::get('/weather/{city?}', [weatherController::class, 'getWeather']);
