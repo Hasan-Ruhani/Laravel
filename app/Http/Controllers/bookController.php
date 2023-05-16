@@ -56,4 +56,12 @@ class bookController extends Controller
 
         return "Author - {$author} and Title - {$title}";  //check to insomnia
     }
+
+    function getHeader(Request $request){
+        $author = $request -> get('author');
+        $title  = $request -> get('title');
+        $token  = $request->header('token');
+
+        return "Author - {$author} Title - {$title} and Token - {$token}";
+    }
 }
