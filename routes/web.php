@@ -31,6 +31,10 @@ Route::controller(bookController::class) -> group(function(){
 
     Route::post('/books', 'createBook');
     Route::post('/header', 'getHeader');
+    Route::post('/photo', 'getFile');
+
+    Route::get('/ip', 'getIp');
+    Route::get('/cookie', 'getCookie');
 });
 // Route::get('/books',[bookController::class, 'books']);
 // Route::get('/books/{id}',[bookController::class, 'getBook']) -> whereNumber(('id'));  //only recive any number
