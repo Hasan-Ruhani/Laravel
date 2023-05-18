@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Faker\Extension\FileExtension;
 use Illuminate\Http\Request;
 
 class bookController extends Controller
@@ -63,5 +64,36 @@ class bookController extends Controller
         $token  = $request->header('token');
 
         return "Author - {$author} Title - {$title} and Token - {$token}";
+    }
+
+    function getIp(Request $request){
+        $myIp = $request -> ip();
+        return $myIp;
+    }
+
+    function getFile(Request $request): array{
+        $author = $request -> get('author');
+        $title  = $request -> get('title');
+        $file   = $request->file('photo');
+        $fileSize = filesize($file);
+        $fileType = filetype($file);
+        $originalName = $file -> getClientOriginalName();
+        $tempFileName = $file -> getFilename();
+        $extension = $file -> extension();
+
+        $file -> move(public_path('upload'), $file ->  getClientOriginalName());
+        // $file -> storeAs('upload', $file -> getClientOriginalName());
+        return array(
+            'Author' => $author,
+            'Title' => $title,
+            'FileSize' => $fileSize,
+            'FileType' => $fileType,
+            'OriginalName' => $originalName,
+            'TempFileName' => $tempFileName,
+            'Extension' => $extension
+            );
+            
+
+        //  return "Author - {$author} Title - {$title} and Photo - {$file}";
     }
 }
