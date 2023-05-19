@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Faker\Extension\FileExtension;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\JsonResource;
 
 class bookController extends Controller
 {
@@ -71,6 +73,11 @@ class bookController extends Controller
         return $myIp;
     }
 
+    function getCookie(Request $request): array|string|int|bool|null{  //use any method
+        return $request -> cookie();    //all cookie
+        //  return $request -> cookie('laravel_session');   //single cookie
+    }
+
     function getFile(Request $request): array{
         $author = $request -> get('author');
         $title  = $request -> get('title');
@@ -95,5 +102,31 @@ class bookController extends Controller
             
 
         //  return "Author - {$author} Title - {$title} and Photo - {$file}";
+    }
+
+    function getRespons(Request $request): JsonResponse{
+        $code = 202;
+        $content = array('Name' => 'Hasan', 'City' => 'Khulna');
+        return response() -> json($content, $code);
+    }
+
+    //............................................Re Direct System
+    function reDirect1(): string{
+        return redirect("/redirect2");
+    }
+
+    function reDirect2(): string{
+        return "Redirected Page From redirect1";
+    }
+    //............................................Re Direct System
+
+    function fileBainary(){
+        $filePath = "upload/kk.jpeg";
+        return response() -> file($filePath);
+    }
+
+    function fileDownload(){
+        $filePath = "upload/kk.jpeg";
+        return response() -> download($filePath);
     }
 }
