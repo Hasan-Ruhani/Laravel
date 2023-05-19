@@ -31,6 +31,18 @@ Route::controller(bookController::class) -> group(function(){
 
     Route::post('/books', 'createBook');
     Route::post('/header', 'getHeader');
+    Route::post('/photo', 'getFile');
+
+    Route::get('/ip', 'getIp');
+    Route::post('/cookie', 'getCookie');
+    Route::post('/respons', 'getRespons');
+    //............................................Re Direct System
+    Route::get('/redirect1', 'reDirect1');
+    Route::get('/redirect2', 'reDirect2');
+    //............................................Re Direct System
+
+    Route::get('/binary', 'fileBainary');
+    Route::get('download', 'fileDownload');
 });
 // Route::get('/books',[bookController::class, 'books']);
 // Route::get('/books/{id}',[bookController::class, 'getBook']) -> whereNumber(('id'));  //only recive any number
