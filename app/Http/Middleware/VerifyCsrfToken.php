@@ -14,6 +14,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'books', 
         'photo',
-        'header'
+        'header',
+        'cookie',
+        'respons'
     ];
 }
