@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\getController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\weatherController;
 use Illuminate\Support\Facades\Route;
