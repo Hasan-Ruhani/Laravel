@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title', 250);
-            $table->text('description');
+            $table->text('description');                         //I want to change "description" to "content"
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });
