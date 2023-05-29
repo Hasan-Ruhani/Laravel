@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\bookController;
 use App\Http\Controllers\getController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\weatherController;
 use Illuminate\Support\Facades\Route;
@@ -50,3 +49,7 @@ Route::controller(bookController::class) -> group(function(){
 // Route::get('/books/{id}/{field}',[bookController::class, 'getBookField']);
 
 Route::get('/weather/{city?}', [weatherController::class, 'getWeather']);
+
+
+$table->string('content')->after('description')->nullable();
+            $table->dropColumn('description');
