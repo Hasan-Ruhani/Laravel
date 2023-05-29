@@ -5,6 +5,7 @@ use App\Http\Controllers\getController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\postController;
 use App\Http\Controllers\weatherController;
+use App\Http\Middleware\SecreatMiddlwear;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,10 @@ Route::controller(bookController::class) -> group(function(){
 
     Route::get('/binary', 'fileBainary');
     Route::get('download', 'fileDownload');
+
+    Route::get('/secrate', 'greet') -> middleware(SecreatMiddlwear::class);  //http://127.0.0.1:8000/secrate?password=123
+
+    Route::get('/throttle', 'clickBreak') -> middleware('throttle:5,1');
 });
 // Route::get('/books',[bookController::class, 'books']);
 // Route::get('/books/{id}',[bookController::class, 'getBook']) -> whereNumber(('id'));  //only recive any number
