@@ -129,4 +129,12 @@ class bookController extends Controller
         $filePath = "upload/kk.jpeg";
         return response() -> download($filePath);
     }
+
+    function greet(){
+        return "Secreat Massage";
+    }
+
+    function clickBreak(){
+        return "Hi please only 5 click in a minite";
+    }
 }
