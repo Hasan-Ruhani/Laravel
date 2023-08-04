@@ -55,6 +55,3 @@ Route::controller(bookController::class) -> group(function(){
 
 Route::get('/weather/{city?}', [weatherController::class, 'getWeather']);
 
-
-$table->string('content')->after('description')->nullable();
-            $table->dropColumn('description');
